@@ -1,3 +1,3 @@
 # my-first-python
  
-for learning purpose
+For learning purpose
