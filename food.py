@@ -253,9 +253,10 @@ while True:
                                                     newOrderList.append(customerUniqueOrder[customerModify - 1]["foodName"])
                                                     foodStall.addFood(customerUniqueOrder[customerModify - 1]["id"], 1)
                                                     i += 1
-                                                amendOrderDict = {"foodName": customerUniqueOrder[customerModify - 1]["foodName"], "quantity": quantity, "totalPrice": quantity * foodPrice}
+                                                amendOrderDict = {"foodName": customerUniqueOrder[customerModify - 1]["foodName"], "quantity": quantity, "totalPrice": quantity * customerUniqueOrder[customerModify - 1]["price"]}
                                                 customerUniqueOrder[customerModify - 1]["quantity"] = amendOrderDict.get("quantity")
                                                 customerUniqueOrder[customerModify - 1]["totalPrice"] = amendOrderDict.get("totalPrice")
+                                                print("Item has been upated accordingly")
                                                 break
                                             else:
                                                 initialQuantity = customerUniqueOrder[customerModify - 1]["quantity"]
