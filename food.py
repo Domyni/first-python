@@ -276,7 +276,7 @@ while True:
         if customerSelect != "x":
             print("Your order summary")
             for elem in customerUniqueOrder:
-                print(str(elem["quantity"]) + " " + elem["foodName"] + " $"+ str(elem["price"]))
+                print(str(elem["quantity"]) + " " + elem["foodName"] + " $"+ str(elem["totalPrice"]))
             print("\nTotal price with tax is ${:.2f}".format(foodStall.totalPriceWithTax()))
             print("For {} person(s), average per person is ${:.2f}".format(pax, foodStall.averagePerPax(pax)))
             print("Thank you for your order, we hope to see you again!\n")
