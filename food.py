@@ -254,8 +254,8 @@ while True:
                                                     foodStall.addFood(customerUniqueOrder[customerModify - 1]["id"], 1)
                                                     i += 1
                                                 amendOrderDict = {"foodName": customerUniqueOrder[customerModify - 1]["foodName"], "quantity": quantity, "totalPrice": quantity * foodPrice}
-                                                customerUniqueOrder[customerModify - 1]["quantity"] = amendOrderDict .get("quantity")
-                                                customerUniqueOrder[customerModify - 1]["totalPrice"] = amendOrderDict .get("totalPrice")
+                                                customerUniqueOrder[customerModify - 1]["quantity"] = amendOrderDict.get("quantity")
+                                                customerUniqueOrder[customerModify - 1]["totalPrice"] = amendOrderDict.get("totalPrice")
                                                 break
                                             else:
                                                 initialQuantity = customerUniqueOrder[customerModify - 1]["quantity"]
