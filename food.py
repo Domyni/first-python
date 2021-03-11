@@ -197,7 +197,7 @@ while True:
                             print(str(elem["quantity"]) + " " + elem["foodName"] + " $"+ str(elem["totalPrice"]))
                         print("Total price with tax is ${:.2f}".format(foodStall.totalPriceWithTax()))
 
-                        proceedToPay = input("\nPress 'y' to proceed to payment\nPress 'c' to continue adding your order\nPress 'm' to modify or delete your order\n")
+                        proceedToPay = input("\nPress 'y' to proceed to payment and exit\nPress 'c' to continue adding your order\nPress 'm' to modify or delete your order\n")
 
                         if proceedToPay == "y":
                             customerContinue = False
@@ -243,8 +243,20 @@ while True:
                                                 print("Item has been removed from list")
                                                 backtoOrderSummary = True
                                                 break
-                                            elif quantity < 0 or quantity > customerUniqueOrder[customerModify - 1]["quantity"]:
+                                            elif quantity < 0:
                                                 print("Invalid Number")
+                                            elif quantity > customerUniqueOrder[customerModify - 1]["quantity"]:
+                                                initialQuantity = customerUniqueOrder[customerModify - 1]["quantity"]
+                                                diff = quantity - initialQuantity 
+                                                i = 0
+                                                while i < diff:
+                                                    newOrderList.append(customerUniqueOrder[customerModify - 1]["foodName"])
+                                                    foodStall.addFood(customerUniqueOrder[customerModify - 1]["id"], 1)
+                                                    i += 1
+                                                amendOrderDict = {"foodName": customerUniqueOrder[customerModify - 1]["foodName"], "quantity": quantity, "totalPrice": quantity * foodPrice}
+                                                customerUniqueOrder[customerModify - 1]["quantity"] = amendOrderDict .get("quantity")
+                                                customerUniqueOrder[customerModify - 1]["totalPrice"] = amendOrderDict .get("totalPrice")
+                                                break
                                             else:
                                                 initialQuantity = customerUniqueOrder[customerModify - 1]["quantity"]
                                                 diff = initialQuantity - quantity
@@ -273,6 +285,17 @@ while True:
                print("Please enter a number\n")
                continue
 
+        if foodStall.totalPriceWithTax() == 0:
+            customerReorder = input("Oh no seems like your cart is empty\nPress 'y' if you would like to order again or press 'x' to exit\n")
+            if customerReorder == "y":
+                continue
+            elif customerReorder == "x":
+                print("We hope to serve you next time!\n")
+                break
+            else:
+                print("Invalid input, exiting program")
+                break
+        
         if customerSelect != "x":
             print("Your order summary")
             for elem in customerUniqueOrder:
